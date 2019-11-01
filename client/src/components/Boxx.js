@@ -2,7 +2,9 @@ import React from "react";
 import { useSave } from "../hooks/useExternal";
 
 
-const Boxx = props => {
+export default function Boxx(props) {
+	clg(">>> BOXX");
+
 	const [saved, setSaved] = useSave([]);
 
 	const doSave = e => {
@@ -16,10 +18,6 @@ const Boxx = props => {
 	return (
 		<Boxx key={props.id}>
 			<h3 className="name">{props.name}</h3>
-
-			{props.country ? <h4>Country: {props.country}</h4> : null}
-			{props.searches ? <h4>Searches: {props.searches}</h4> : null}
-
 			<button onClick={doSave} value={props.id}>
 				Save
 			</button>
@@ -27,4 +25,6 @@ const Boxx = props => {
 	);
 };
 
-export default Boxx;
+function clg(...x) {
+	for (let exes of x) console.log(exes);
+}
