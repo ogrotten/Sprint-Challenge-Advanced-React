@@ -19,23 +19,38 @@ class App extends React.Component {
 
 	componentDidMount() {
 		const fetchURL = "http://localhost:5000/api/players"
-		// clg(">>> Mount");
+		clg(">>> Mount");
 		axios
 			.get(fetchURL)
 			.then(res => {
-				this.setState({ user: res.data });
-				// clg(this.state.user);
+				this.setState({ players: res.data });
+				// clg("Mount vvvvv",this.state.players,"Mount ^^^^^");
 			})
 			.catch(err => {
 				clg(`Problem: ${err}`);
 			});
 	}
 
+	// componentDidUpdate() {
+	// 	clg(">>> UpD");
+	// 	if (this.state.followers === null && this.state.user.followers > 0) {
+	// 		axios
+	// 			.get("https://api.github.com/users/ogrotten/followers")
+	// 			.then(res => {
+	// 				this.setState({ followers: res.data });
+	// 				// clg(this.state.followers);
+	// 			})
+	// 			.catch(err => {
+	// 				clg(`Problem: ${err}`);
+	// 			});
+	// 	}
+	// }
+
 	render() {
 		return (
 			<div className="App">
 				<Player
-					player={this.state.user} /* stats={this.state.stats} */
+					players={this.state.players} /* stats={this.state.stats} */
 				></Player>
 			</div>
 		);
