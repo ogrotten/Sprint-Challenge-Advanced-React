@@ -7,11 +7,8 @@ export default function Boxx(props) {
 
 
 	return (
-		<div key={props.id}>
+		<div key={props.id} id={`id${props.id}`}>
 			<h3 className="name">{props.name}</h3>
-			<button onClick={props.doSave} value={props.id}>
-				Save
-			</button>
 		</div>
 	);
 };

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Boxx from "../components/Boxx"
+// import Boxx from "../components/Boxx"
 
 export const useLocalStorage = (key, initialValue) => {
 	const [storedValue, setStoredValue] = useState(() => {
@@ -15,20 +15,15 @@ export const useLocalStorage = (key, initialValue) => {
 	return [storedValue, setValue];
 };
 
-export const useSave = (incoming) => {
-	clg("useSave");
-	clg(incoming);
-	const [saved, setSaved] = useLocalStorage(incoming);
-	
-	useEffect(() => {
-		// <Boxx 
-		// 	doSave={}
-		// 	id={itm.id}
-		// 	name={itm.name}
-		// />
-	}, [saved])
+export const useDark = (incoming) => {
+	const [darkMode, setDarkMode] = useLocalStorage(incoming);
+	const body = document.querySelector("body");
 
-	return [saved, setSaved]
+	useEffect(() => {
+		darkMode ? body.classList.add("dark-mode") : body.classList.remove("dark-mode");
+	}, [darkMode]);
+
+	return [darkMode, setDarkMode]
 };
 
 function clg(...x) {

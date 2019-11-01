@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useSave } from "../hooks/useExternal";
+import { useDark } from "../hooks/useExternal";
 
 import Boxx from "./Boxx"
 
@@ -9,24 +9,24 @@ import Boxx from "./Boxx"
 export default function Player(props) {
 	clg(">>> Player component");
 
-	const [saved, setSaved] = useSave({});
+	const [dark, setDark] = useDark(false);
 
-	const doSave = e => {
-		clg("doSave")
+	const togDark = e => {
 		e.preventDefault();
-		// clg(e.target.value);
-		const chosen = props.players.find(f => f.id == e.target.value);
-		clg(chosen);
-		setSaved(chosen);
+		setDark(!dark);
 	};
 
 	return (
 		<Outer>
 			{/* {props.players[7].name} */}
+			<button onClick={togDark} >
+				Lights
+			</button>
+
 			{props.players ? (
 				props.players.map(itm => (
 					<Boxx 
-						doSave={doSave}
+						togDark={togDark}
 						id={itm.id}
 						name={itm.name}
 					/>
@@ -44,7 +44,8 @@ function clg(...x) {
 
 const Outer = styled.div`
 	border: 1px solid silver;
-	margin: 20px;
+	width: 250px;
+	margin: 20px auto;
 	padding: 5px;
 	background-color: #eef;
 `;
