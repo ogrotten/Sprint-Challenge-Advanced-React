@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Boxx from "../components/Boxx"
 
 export const useLocalStorage = (key, initialValue) => {
 	const [storedValue, setStoredValue] = useState(() => {
@@ -15,11 +16,21 @@ export const useLocalStorage = (key, initialValue) => {
 };
 
 export const useSave = (incoming) => {
+	clg("useSave");
+	clg(incoming);
 	const [saved, setSaved] = useLocalStorage(incoming);
-
-	// useEffect(() => {
-		
-	// }, [saved])
+	
+	useEffect(() => {
+		// <Boxx 
+		// 	doSave={}
+		// 	id={itm.id}
+		// 	name={itm.name}
+		// />
+	}, [saved])
 
 	return [saved, setSaved]
 };
+
+function clg(...x) {
+	for (let exes of x) console.log(exes);
+}

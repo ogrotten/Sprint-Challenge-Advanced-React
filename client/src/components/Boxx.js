@@ -1,27 +1,18 @@
 import React from "react";
-import { useSave } from "../hooks/useExternal";
 
 
 export default function Boxx(props) {
-	clg(">>> BOXX");
+	// clg(">>> BOXX");
+	// clg(props)
 
-	const [saved, setSaved] = useSave([]);
-
-	const doSave = e => {
-		e.preventDefault();
-		// clg(e.target.value);
-		const chosen = props.players.find(f => f.id == e.target.value);
-		// clg(chosen);
-		setSaved(chosen);
-	};
 
 	return (
-		<Boxx key={props.id}>
+		<div key={props.id}>
 			<h3 className="name">{props.name}</h3>
-			<button onClick={doSave} value={props.id}>
+			<button onClick={props.doSave} value={props.id}>
 				Save
 			</button>
-		</Boxx>
+		</div>
 	);
 };
 

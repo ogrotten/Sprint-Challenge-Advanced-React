@@ -31,21 +31,6 @@ class App extends React.Component {
 			});
 	}
 
-	// componentDidUpdate() {
-	// 	clg(">>> UpD");
-	// 	if (this.state.followers === null && this.state.user.followers > 0) {
-	// 		axios
-	// 			.get("https://api.github.com/users/ogrotten/followers")
-	// 			.then(res => {
-	// 				this.setState({ followers: res.data });
-	// 				// clg(this.state.followers);
-	// 			})
-	// 			.catch(err => {
-	// 				clg(`Problem: ${err}`);
-	// 			});
-	// 	}
-	// }
-
 	render() {
 		return (
 			<div className="App">
