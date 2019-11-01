@@ -7,7 +7,7 @@ export default function Boxx(props) {
 
 
 	return (
-		<div key={props.id} id={`id${props.id}`}>
+		<div key={props.id} id={`id${props.id}`} data-testid={`id${props.id}`}>
 			<h3 className="name">{props.name}</h3>
 		</div>
 	);
