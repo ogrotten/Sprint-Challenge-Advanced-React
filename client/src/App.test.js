@@ -1,9 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import * as rtl from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+import App from "./App";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+afterEach(rtl.cleanup);
+
+test("renders without crashing", () => {
+	const wrapper = rtl.render(<App />);
+
+	const hasLightsButt = wrapper.queryByText(/lights/i);
+	expect(hasLightsButt).toBeInTheDocument;
+
+	const hasLoading = wrapper.queryByText(/loading/i)
+	expect(hasLoading).toBeInTheDocument;
 });
+
+
+// test("renders without crashing", () => {
+// 	const wrapper = rtl.render(<App />);
+// 	const player = 7;
+// 	const position = wrapper.getByTestId(`id7`)
+// 	expect(position.textContent).toBe("Julie Ertz")
+// });
